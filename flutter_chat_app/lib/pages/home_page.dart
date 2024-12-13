@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// Импортируйте файлы с экранами
+
 import 'catalog_page.dart';
 import 'favorites_page.dart';
 import 'cart_page.dart';
 import 'profile_page.dart';
 import 'chat_screen.dart';
 
-// Импортируйте модель Comic
+
 import '../models/comic.dart';
 
-// Определите список comics
+
 final List<Comic> comics = [
   Comic(
     title: 'Spider-Man: Blue',
@@ -124,13 +124,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  // Список страниц, которые будут отображаться в BottomNavigationBar
+  
   final List<Widget> _pages = [
-    CatalogPage(comics: comics), // Передайте comics в CatalogPage
-    FavoritesPage(comics: comics), // Передайте comics в FavoritesPage
-    CartPage(comics: comics), // Передайте comics в CartPage
-    ProfilePage(), // Профиль не требует comics
-    ChatScreen(), // Чат не требует comics
+    CatalogPage(comics: comics), 
+    FavoritesPage(comics: comics), 
+    CartPage(comics: comics), 
+    ProfilePage(), 
+    ChatScreen(),
   ];
 
   @override
@@ -147,39 +147,39 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: _pages[_currentIndex], // Отображаем текущую страницу
+      body: _pages[_currentIndex], 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index; // Обновляем текущий индекс
+            _currentIndex = index; 
           });
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: const Color.fromARGB(255, 77, 77, 77)), // Белый цвет иконки
+            icon: Icon(Icons.home, color: const Color.fromARGB(255, 77, 77, 77)), 
             label: 'Главная',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite, color: const Color.fromARGB(255, 210, 14, 14)), // Белый цвет иконки
+            icon: Icon(Icons.favorite, color: const Color.fromARGB(255, 210, 14, 14)), 
             label: 'Избранное',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: const Color.fromARGB(255, 12, 132, 231)), // Белый цвет иконки
+            icon: Icon(Icons.shopping_cart, color: const Color.fromARGB(255, 12, 132, 231)), 
             label: 'Корзина',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: const Color.fromARGB(255, 127, 10, 215)), // Белый цвет иконки
+            icon: Icon(Icons.person, color: const Color.fromARGB(255, 127, 10, 215)), 
             label: 'Профиль',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat, color: const Color.fromARGB(255, 31, 30, 30)), // Белый цвет иконки
+            icon: Icon(Icons.chat, color: const Color.fromARGB(255, 31, 30, 30)), 
             label: 'Чат',
           ),
         ],
-        selectedItemColor: Colors.blue, // Цвет выбранной иконки
-        unselectedItemColor: Colors.white, // Цвет невыбранных иконок
-        backgroundColor: Colors.black, // Фон BottomNavigationBar
+        selectedItemColor: Colors.blue, 
+        unselectedItemColor: Colors.white, 
+        backgroundColor: Colors.black, 
       ),
     );
   }
