@@ -8,13 +8,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String name = 'Akito'; // Устанавливаем имя по умолчанию
-  final TextEditingController _nameController = TextEditingController(); // Контроллер для TextField
+  String name = 'Akito'; 
+  final TextEditingController _nameController = TextEditingController(); 
 
   @override
   void initState() {
     super.initState();
-    _nameController.text = name; // Устанавливаем начальное значение в TextField
+    _nameController.text = name; 
   }
 
   @override
@@ -31,16 +31,16 @@ class _ProfilePageState extends State<ProfilePage> {
               radius: 50,
               child: Icon(Icons.person, size: 50),
             ),
-            SizedBox(height: 20), // Добавляем отступ
+            SizedBox(height: 20), 
             TextField(
-              controller: _nameController, // Устанавливаем контроллер
+              controller: _nameController, 
               decoration: InputDecoration(
                 labelText: 'Имя',
-                border: OutlineInputBorder(), // Добавляем рамку для поля ввода
+                border: OutlineInputBorder(), 
               ),
               onChanged: (value) {
                 setState(() {
-                  name = value; // Обновляем имя при изменении текста
+                  name = value; 
                 });
               },
             ),
