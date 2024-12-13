@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// Импортируйте файлы с экранами
+
 import 'pages/auth_screen.dart';
-import 'pages/home_page.dart'; // Добавьте импорт для главной страницы
+import 'pages/home_page.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
