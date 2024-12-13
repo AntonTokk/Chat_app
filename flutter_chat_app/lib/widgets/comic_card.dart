@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/comic.dart'; // Убедитесь, что вы импортируете модель Comic
+import '../models/comic.dart'; 
 
 class ComicCard extends StatelessWidget {
   final Comic comic;
