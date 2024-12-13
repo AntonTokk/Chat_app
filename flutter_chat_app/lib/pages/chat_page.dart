@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../widgets/message_bubble.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class ChatPage extends StatelessWidget {
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Чат'),
+        title: Text('Чат с продавцом'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -42,6 +51,7 @@ class Messages extends StatelessWidget {
           reverse: true,
           itemCount: docs.length,
           itemBuilder: (ctx, index) => MessageBubble(
+            key: ValueKey(docs[index].id),
             message: docs[index]['text'],
             isMe: docs[index]['userId'] == FirebaseAuth.instance.currentUser!.uid,
           ),
@@ -93,39 +103,6 @@ class _NewMessageState extends State<NewMessage> {
           IconButton(
             icon: Icon(Icons.send),
             onPressed: _enteredMessage.trim().isEmpty ? null : _sendMessage,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MessageBubble extends StatelessWidget {
-  final String message;
-  final bool isMe;
-
-  const MessageBubble({super.key, required this.message, required this.isMe});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-        children: [
-          Material(
-            color: isMe ? Colors.blue : Colors.grey[300],
-            borderRadius: BorderRadius.circular(10),
-            elevation: 5,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              child: Text(
-                message,
-                style: TextStyle(
-                  color: isMe ? Colors.white : Colors.black,
-                ),
-              ),
-            ),
           ),
         ],
       ),

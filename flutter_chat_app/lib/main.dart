@@ -3,8 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // Импортируйте файлы с экранами
-import 'auth_screen.dart';
-import 'chat_screen.dart';
+import 'pages/auth_screen.dart';
+import 'pages/home_page.dart'; // Добавьте импорт для главной страницы
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,10 +13,12 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Chat',
+      title: 'Магазин комиксов',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -26,9 +28,9 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData) {
-            return ChatScreen();
+            return HomePage(); // Переход на главную страницу после авторизации
           } else {
-            return AuthScreen();
+            return AuthScreen(); // Если пользователь не авторизован
           }
         },
       ),

@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class MessageBubble extends StatelessWidget {
   final String message;
   final bool isMe;
-  final Key key;
+  final Key key; // Убрали дублирующее объявление
 
-  MessageBubble({required this.message, required this.isMe, required this.key});
+  MessageBubble({
+    required this.message,
+    required this.isMe,
+    required this.key, // Убрали дублирующее объявление
+  });
 
   @override
   Widget build(BuildContext context) {
