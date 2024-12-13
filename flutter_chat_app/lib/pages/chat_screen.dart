@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../widgets/chat_message.dart'; // Импортируйте файл chat_message.dart
+import '../widgets/chat_message.dart'; 
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -19,7 +19,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    _userId = _auth.currentUser!.uid; // Получаем ID текущего пользователя
+    _userId = _auth.currentUser!.uid; 
   }
 
   void _sendMessage(String text) {
@@ -33,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     _controller.clear();
 
-    // Автоматический ответ продавца
+  
     _sendAutoReply(text);
   }
 
@@ -51,11 +51,11 @@ class _ChatScreenState extends State<ChatScreen> {
       autoReply = 'Я вас не совсем понял. Пожалуйста, уточните вопрос.';
     }
 
-    // Отправляем автоматический ответ
+   
     _firestore.collection('messages').add({
       'text': autoReply,
       'createdAt': Timestamp.now(),
-      'userId': 'seller', // Уникальный ID продавца
+      'userId': 'seller', 
     });
   }
 
